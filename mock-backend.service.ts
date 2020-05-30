@@ -7,7 +7,7 @@ import { of } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
 import { authController } from './authController';
 
-export class fakeBackend implements HttpInterceptor {
+export class mockBackend implements HttpInterceptor {
   /* simulated delay value in ms */
   delay = 2000;
 

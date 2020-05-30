@@ -40,5 +40,9 @@ export const authController = (request): HttpResponse<any> => {
         status: 404,
       });
     }
+  } else {
+    return new HttpResponse({
+      status: 400,
+    });
   }
 };
