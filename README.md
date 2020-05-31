@@ -10,7 +10,7 @@ clone the files into an Angular app, perferably into a 'services' directory
 
     app
     ├── ...
-    ├── scr
+    ├── src
     │   ├── app
     │   │   ├── ...
     │   │   ├── services
