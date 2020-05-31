@@ -1,6 +1,6 @@
 # Mock Authentication Backend Angular 9
 
-An Angular HttpInterceptor that will simulate basic unencrypted authentication (email and password).
+An Angular HttpInterceptor that will simulate basic unencrypted authentication (email and password). Made to replace the deprecated classes from @angular/http/testing MockBackend and MockConnection.
 
 ### Setup
 
