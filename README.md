@@ -69,36 +69,75 @@ configure 'app.module.ts' to include mockBackend class as a provider
 body: { email: string, password: string }
 ```
 
-### Response body
+> GET /api/orders
+
+```typescript
+headers: {
+  "Authorization" : jwtToken
+}
+```
+
+### Response codes and body
+
+> POST /api/authenticate
 
 #### Authenticated email and password
 
-```typescript
+```json
 {
-  status: 200;
+  "status": 200
 }
 ```
 
 #### Found email, wrong password
 
-```typescript
+```json
 {
-  status: 401;
+  "status": 401
 }
 ```
 
 #### Email not found
 
-```typescript
+```json
 {
-  status: 404;
+  "status": 404
 }
 ```
 
 #### Invalid endpoint or method
 
-```typescript
+```json
 {
-  status: 400;
+  "status": 400
+}
+```
+
+> GET /api/orders
+
+#### Same JWT Token
+
+```json
+{
+  "status": 200,
+  "body": {
+    "orders": [1, 2, 3]
+  }
+}
+```
+
+#### Different JWT Token
+
+```json
+{
+  "status": 401
+}
+```
+
+#### Invalid endpoint or method
+
+```json
+{
+  "status": 400
 }
 ```

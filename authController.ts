@@ -15,13 +15,10 @@ tsconfig.json
     
 */
 
-export const authController = (request): HttpResponse<any> => {
+export const authController = (token) => (request): HttpResponse<any> => {
   /* ENDPOINT = '/api/authenticate' METHOD = 'POST' */
   if (request.url === '/api/authenticate' && request.method === 'POST') {
-    const {
-      email,
-      password,
-    }: { email: string; password: string } = request.body;
+    const { email, password }: { email: string; password: string } = request.body;
 
     let mockDbQuery = db.find(({ email: dbEmail }) => email === dbEmail);
 
@@ -39,6 +36,12 @@ export const authController = (request): HttpResponse<any> => {
       return new HttpResponse({
         status: 404,
       });
+    }
+  } else if (request.url === '/api/orders' && request.method === 'GET') {
+    if (request.headers.get('Authorization') === `Bearer ${token}`) {
+      return new HttpResponse({ status: 200, body: [1, 2, 3] });
+    } else {
+      return new HttpResponse({ status: 401 });
     }
   } else {
     return new HttpResponse({
